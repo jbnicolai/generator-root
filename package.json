@@ -1,10 +1,10 @@
 {
-  "name": "generator-base",
+  "name": "generator-root",
   "version": "0.0.0",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "wilsonand1/generator-base",
+  "repository": "wilsonand1/generator-root",
   "author": {
     "name": "Danny Wilson",
     "email": "dannywilson32@gmail.com",

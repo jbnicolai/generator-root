@@ -43,7 +43,7 @@ var BaseGenerator = yeoman.generators.Base.extend({
 
     this.copy('Gruntfile.js', 'Gruntfile.js');
     this.copy('package.json', 'package.json');
-    this.copy('.gitignore', '.gitignore');
+    this.copy('_gitignore', '.gitignore');
   },
 
   vagrant: function () {

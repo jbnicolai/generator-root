@@ -1,0 +1,149 @@
+// @include breakpoint (mobile) {background: #000}
+@mixin breakpoint($point) {
+  @if $point == mobile {
+    @media all and (max-width: 400px) { @content; }
+  }
+  @else if $point == tablet {
+    @media all and (max-width: 700px) { @content; }
+  }
+  @else if $point == large {
+    @media all and (min-width: 1400px) { @content; }
+  }
+}
+
+//@include box-sizing(border-box);
+@mixin box-sizing($bs: border-box) {
+	-webkit-box-sizing: $bs;
+	-moz-box-sizing: $bs;
+	box-sizing: $bs;
+}
+
+//@include opacity(100);
+@mixin opacity($level) {
+	filter: alpha(opacity = $level * 100);
+	opacity: $level;
+}
+
+//@include transition(padding, 1s, ease-in-out);
+@mixin transition($properties: all, $duration: 180ms, $easing: ease-out) {
+@if length($properties) > 1 {
+		-webkit-transition-property: $properties;
+		-webkit-transition-duration: $duration;
+		-webkit-transition-timing-function: $easing;
+		transition-property: $properties;
+		transition-duration: $duration;
+		transition-timing-function: $easing;
+	} @else {
+		-webkit-transition: $properties $duration $easing;
+		transition: $properties $duration $easing;
+	}
+}
+
+//@include linear-gradient(#FFF, #000);
+@mixin linear-gradient($fromColor, $toColor) {
+	background-color: $toColor;
+	background-image: -webkit-gradient(linear, left top, left bottom, from($fromColor), to($toColor));
+	background-image: -webkit-linear-gradient(top, $fromColor, $toColor);
+	background-image: -moz-linear-gradient(top, $fromColor, $toColor);
+	background-image: -ms-linear-gradient(top, $fromColor, $toColor);
+	background-image: -o-linear-gradient(top, $fromColor, $toColor);
+	background-image: linear-gradient(top, $fromColor, $toColor);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='$fromColor', EndColorStr='$toColor');
+}
+
+//@include transform()
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+	-moz-transform: $transform;
+	-o-transform: $transform;
+	transform: $transform;
+}
+
+//@include rounded(6px);
+@mixin rounded($radius:6px) {
+	border-radius: $radius;
+}
+
+//@include retina() {background: #000;}
+@mixin retina() {
+	@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) { @content; }
+}
+
+//@include font-size()
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+//@include hover() {color: #F00;}
+@mixin hover {
+	&:hover, &:active, &:focus {
+		@content;
+	}
+}
+
+//@include blur(5px)
+@mixin blur($amount) {
+	-webkit-filter: blur($amount);
+	-moz-filter: blur($amount);
+	-o-filter: blur($amount);
+	-ms-filter: blur($amount);
+	filter: blur($amount);
+	-webkit-backface-visibility: hidden;
+	-webkit-perspective: 1000;
+	//filter: progid:DXImageTransform.Microsoft.blur(pixelradius=2);
+}
+
+//@include position(absolute, 0px, 0px, 0px, 0px)
+@mixin position($position, $top: auto, $left: auto, $bottom: auto, $right: auto) {
+	position: $position;
+	top: $top;
+	right: $right;
+	bottom: $bottom;
+	left: $left;
+}
+
+//@include transform3d()
+@mixin transform3d {
+	-webkit-transform: translate3d(0, 0, 0);
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+// @include animation('name 500ms forwards 1')
+@mixin animation($animate...) {
+	$max: length($animate);
+	$animations: '';
+
+	@for $i from 1 through $max {
+		$animations: #{$animations + nth($animate, $i)};
+
+		@if $i < $max {
+			$animations: #{$animations + ", "};
+		}
+	}
+	-webkit-animation: $animations;
+	-moz-animation:    $animations;
+	-o-animation:      $animations;
+	animation:         $animations;
+}
+
+// @include keyframes(name) { 0% { background:white; } 100% { background: black; } }
+@mixin keyframes($animationName) {
+	@-webkit-keyframes #{$animationName} {
+		@content;
+	}
+	@-moz-keyframes #{$animationName} {
+		@content;
+	}
+	@-o-keyframes #{$animationName} {
+		@content;
+	}
+	@keyframes #{$animationName} {
+		@content;
+	}
+}

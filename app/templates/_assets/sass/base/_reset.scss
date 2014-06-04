@@ -1,0 +1,50 @@
+// Dirty reset
+*, :before, :after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+// Blanket images
+img {
+  max-width: 100%;
+}
+
+// block and mb on all
+div, article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section,
+p, .p, blockquote, table, form, ul, ol, img, .img,
+h1, .alpha, h2, .beta, h3, .mega, .ultra {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+// Lists
+ul, ol {
+  padding-left: 1.3em;
+}
+
+  li > ul, li > ol {
+    margin-bottom: 0;
+  }
+
+// Nav lists
+nav, nav ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+nav li, nav a {
+  display: inline-block;
+}
+
+html, body {
+  min-height: 100%;
+  position: relative;
+}
+.page {
+  max-width:60rem;
+  margin: 0 auto;
+  padding:1rem;
+}

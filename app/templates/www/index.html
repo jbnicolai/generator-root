@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8" />
+<title>index</title>
+</head>
+<body>
+<h1>Base</h1>
+<p>A base set of project files including Sass files and a Grunt file.</p>
+<h2>Sass files</h2>
+<h3><a href="_assets/sass/base/_grid.scss">_grid.scss</a></h3>
+<p>A simple CSS grid. Up to 12 columns, each with push/states, and a centered class.</p>
+<h3><a href="_assets/sass/base/_mixins.scss">_mixin.scss</a></h3>
+<p>Just a selection of mixing. They're all pretty self explanatory but they have an example written above them.</p>
+<h3><a href="_assets/sass/base/_reset.scss">_reset.scss</a></h3>
+<p>Based on <a href="http://daneden.me">Dan Eden's</a> with a few tweaks. Nothing to the extent of most reset CSS files but I prefer this way.</p>
+<h3><a href="_assets/sass/base/_type.scss">_type.scss</a></h3>
+<p>Also for my own personal gain. This is there to stop me defining a font size for each little thing. Also pretty usefully to scale down the font size to the device.</p>
+<h3><a href="_assets/sass/base/_variables.scss">_variables.scss</a></h3>
+<p>Because Sass is awesome.</p>
+<h2>Grunt.js</h2>
+<p>My <a href="Gruntfile.js">gruntfile</a> is pretty bare bones to. Nothing major, just does the job. All of the assets (images, js, scss) are stored in the _assets folder, which are then compiled into the www folder.</p>
+<h3><a href="https://github.com/sindresorhus/grunt-sass">Sass</a></h3>
+<p>I'm using libsass vs the Ruby Sass because this is lightening fast compared with the Ruby Sass.</p>
+<h3><a href="https://github.com/nDmitry/grunt-autoprefixer">Autoprefixer</a></h3>
+<p>This killed the prefixr Sublime pluggin for me. Gone are the days when you had to worry about browser prefixes.</p>
+<h3><a href="https://github.com/gruntjs/grunt-contrib-cssmin">cssmin</a></h3>
+<p>Because Sass doesn't want to minify my css for me.</p>
+<h3><a href="https://github.com/gruntjs/grunt-contrib-uglify">uglify</a></h3>
+<p>On the rare occasion I'm writting JavaScript, I like to keep make that shit ugly.</p>
+<h3><a href="https://github.com/gruntjs/grunt-contrib-imagemin">imagemin</a></h3>
+<p>Ain't nobody got time to download your 2mb+ images.</p>
+<h3><a href="https://github.com/gruntjs/grunt-contrib-watch">Watch</a></h3>
+<p>And of course, the glue that holds it all together. My watch tasks wathes certain directories and fires off the associated tasks for that directory.</p>
+<h2><a href="http://www.vagrantup.com/">Vagrant</a></h2>
+<p>Vagrant is what I use for my local server stuff. Included is my <a href="Vagrantfile">vagrantfile</a> which sets up the box with VirtualBox and the <a href="manifests/default.pp">puppet</a> provision files to provision the server. For this you will need to add a box called <code>devserver</code> by running the command: <code>vagrant box add devserver http://files.vagrantup.com/precise32.box</code> Or you can add your own box if you like by changing the vagrant file.--</p>
+<p>You will also need to install host manager plugin for vagrant. Install this by running the command <code>vagrant plugin install vagrant-hostmanager</code> I prefer this way over using port forwarding.</p>
+<p>During the provisioning, Puppet will edit the virtual hosts the server setting the DocumentRoot of the VirtualHost to be <code>/vagrant/www</code>. This will be the same as your local copy of <code>www</code>. If you're unfamiliar with the way Vagrant works, go ahead and read up on the <a href="http://docs.vagrantup.com/v2/">docs</a>.</p>
+</body>
+</html>
